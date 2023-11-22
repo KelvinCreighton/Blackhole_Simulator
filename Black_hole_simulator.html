@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+
+    <style>
+        canvas {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            text-align: center;
+            color: rgb(255, 255, 255);
+        }
+    </style>
+
+
+<body style="background-color: #000000;">
+    <canvas id="Canvas" style="border:1px solid #ffffff;"></canvas>
+    
+    
+    <div class="overlay">    
+        <!--<p>This is a paragraph overlay on the canvas!</p>-->
+    </div>
+
+
+    <script src="files/canvas_lib.js"></script>
+    <script src="files/blackhole.js"></script>
+    <script src="files/satellite.js"></script>
+    <script src="files/main.js"></script>
+</body>
+</html>
