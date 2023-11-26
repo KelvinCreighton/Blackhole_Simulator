@@ -5,8 +5,15 @@ let blackhole = new Blackhole(Width/2, Height/2, 2000);
 let satellites = [];
 let creatingSatellite = false;
 
+// Load Images
+let pizzaImg;
+loadImage('images/pizza1.png', (loadedImg) => {
+    pizzaImg = loadedImg; // Image is now loaded and can be used
+    console.log("Image loaded", pizzaImg);
+});
+
 function Main() {
-    satellites.push(new Satellite(100, 100, 100, 1, 2));
+    // satellites.push(new Satellite(100, 100, 100, 1, 2)); // Regular satellite
     setInterval(Update, 20);    // 50fps
 }
 
