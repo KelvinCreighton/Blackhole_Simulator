@@ -6,7 +6,7 @@ let satellites = [];
 let creatingSatellite = false;
 
 function Main() {
-    satellites.push(new Satellite(100, 100, 100, 1, 2));
+    //satellites.push(new Satellite(100, 100, random(50, 200), 1, 2));
     setInterval(Update, 20);    // 50fps
 }
 
@@ -15,6 +15,7 @@ function Update() {
 
     createSatellite();
     
+    blackhole.jetUpdate();
     blackhole.display();
     //blackhole.printInfo();
 
@@ -27,6 +28,7 @@ function Update() {
 
         let collision = satellites[i].attract();
         if (collision) {
+            blackhole.growAD(satellites[i].mass);
             satellites.splice(i, 1);
             continue;
         }

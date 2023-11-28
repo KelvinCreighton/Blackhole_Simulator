@@ -41,7 +41,7 @@ function createSatellite() {
 
     if (mousePress && !creatingSatellite) {
         //print("create");
-        satellites.push(new Satellite(mouseX, mouseY, 100, 0, 0, true));
+        satellites.push(new Satellite(mouseX, mouseY, random(50, 100), 0, 0, true));
         creatingSatellite = true;
     } else if (mousePress && creatingSatellite) {
         //print("adjusting velocity");
