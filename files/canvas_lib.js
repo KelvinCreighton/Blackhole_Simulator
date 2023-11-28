@@ -94,3 +94,21 @@ function ellipse(x, y, rX, rY, rotation=0, start=0, end=(Math.PI*2)) {
     Canvas.beginPath();
     Canvas.ellipse(x, y, rX, rY, rotation, start, end);
 }
+
+
+/*
+-------------------------------
+  Additional Helpful Functions
+-------------------------------
+*/
+function random(a, b) {
+	return (Math.random() * ((b-a)+1)) + a;
+}
+
+function floor(n) {
+	return Math.floor(n);
+}
+
+function ceil(n) {
+	return Math.ceil(n);
+}
