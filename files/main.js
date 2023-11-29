@@ -28,7 +28,7 @@ function Update() {
 
         let collision = satellites[i].attract();
         if (collision) {
-            blackhole.growAD(satellites[i].mass);
+            blackhole.growMass(satellites[i].mass);
             satellites.splice(i, 1);
             continue;
         }

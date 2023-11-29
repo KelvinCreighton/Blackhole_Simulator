@@ -31,9 +31,10 @@ class Blackhole {
         return (G * this.mass * objectMass) / (distance*distance);
     }
 
-    growAD(mass) {
-        let growPercent = 0.01
-        this.ADSize += mass * growPercent;
+    growMass(mass) {
+        let ADGrowAmount = mass * 0.01      // 1%
+        this.ADSize += ADGrowAmount;        // Accretion Disk grows by 1%
+        this.mass += mass - ADGrowAmount    // Mass grows by 99%
     }
 
     display() {

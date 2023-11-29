@@ -112,4 +112,4 @@ function floor(n) {
 
 function ceil(n) {
 	return Math.ceil(n);
-
+}
