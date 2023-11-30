@@ -62,29 +62,23 @@ function createImageSatellite() {
     let randomImageDetail = images[Math.floor(Math.random() * images.length)];
     let newSatellite = new Satellite(mouseX, mouseY, 100, 0, 0, true, randomImageDetail.img, 50, randomImageDetail.title);
     satellites.push(newSatellite);
-    adjustSatelliteVelocity(newSatellite);
 
     selectedSatelliteTitle = newSatellite.title;
-
 }
 
-// function createSatellite() {
-//     if (mousePressed && !creatingSatellite) {
-//         createImageSatellite(); // Create an image satellite instead
-//         creatingSatellite = true;
-//     } else if (!mousePressed && creatingSatellite) {
-//         creatingSatellite = false;
-//     }
-// }
-
-
 function createSatellite() {
+    // Create a new nonMovable satellite while the user is clicking and dragging
+    // to allow the user to decide what velocity and direction to spawn the
+    // satellite in
     if (mousePress && !creatingSatellite) {
         createImageSatellite();
-        // let newSatellite = new Satellite(mouseX, mouseY, 100, 0, 0, true, 50);
-        // satellites.push(newSatellite);
-        // adjustSatelliteVelocity(newSatellite);
         creatingSatellite = true;
+    // After the satellite was created, continueally update the starting
+    // velocity of the satellite until the user releases the button
+    } else if (mousePress && creatingSatellite) {
+        let lastSatellite = satellites[satellites.length-1];
+        adjustSatelliteVelocity(lastSatellite);
+    // When the user relases the mouse click, set the satellite to be moveable
     } else if (!mousePress && creatingSatellite) {
         let lastSatellite = satellites[satellites.length-1];
         lastSatellite.nonMoveable = false;
@@ -96,35 +90,15 @@ function adjustSatelliteVelocity(satellite) {
     const velocityScaler = 1/50;
     satellite.vx = (satellite.x - mouseX) * velocityScaler;
     satellite.vy = (satellite.y - mouseY) * velocityScaler;
+
+    //Small velocity adjusting visualizing
+    let x = satellites[satellites.length-1].x
+    let y = satellites[satellites.length-1].y;
+    let u = 2*x - mouseX;
+    let v = 2*y - mouseY;
+    line(x, y, u, v);
+    strokeWeight(4);
+    stroke("#ffffff");
 }
 // Set an interval to toggle the period state
 setInterval(toggleBlinkingPeriod, 500); // Adjust the interval as needed
-
-
-// function createSatellite() {
-//     const velocityScaler = 1/50;
-
-//     if (mousePress && !creatingSatellite) {
-//         //print("create");
-//         satellites.push(new Satellite(mouseX, mouseY, random(50, 100), 0, 0, true));
-//         creatingSatellite = true;
-//     } else if (mousePress && creatingSatellite) {
-//         //print("adjusting velocity");
-//         satellites[satellites.length-1].vx = (satellites[satellites.length-1].x-mouseX) * velocityScaler;
-//         satellites[satellites.length-1].vy = (satellites[satellites.length-1].y-mouseY) * velocityScaler;
-
-//         // Small velocity adjusting visualizing
-//         let x = satellites[satellites.length-1].x
-//         let y = satellites[satellites.length-1].y;
-//         let u = 2*x - mouseX;
-//         let v = 2*y - mouseY;
-//         line(x, y, u, v);
-//         strokeWeight(4);
-//         stroke("#ffffff");
-
-//     } else if (!mousePress && creatingSatellite) {
-//         //print("created");
-//         satellites[satellites.length-1].nonMoveable = false;
-//         creatingSatellite = false;
-//     }
-// }
