@@ -13,6 +13,9 @@ canvas.addEventListener("mouseup"  , mouseReleased);
 let mouseX, mouseY;
 let mousePress;
 
+let PI = Math.PI;
+let PI2 = PI*2;
+
 function mouseCoors(e) {
 	mouseX = e.clientX - canvas.getBoundingClientRect().left;
 	mouseY = e.clientY - canvas.getBoundingClientRect().top;

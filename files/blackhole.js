@@ -6,10 +6,10 @@ class Blackhole {
         this.size = 50;
         
         // Accretion Disk (AD)
-        this.ADSize = 0;
+        this.ADSize = 4;
         this.ADMaxSize = 10;
         this.jetActivate = false;
-        this.jetMassFlow = 0.05;
+        this.jetMassFlow = 0.08;
     }
 
     jetUpdate() {
@@ -31,32 +31,39 @@ class Blackhole {
         return (G * this.mass * objectMass) / (distance*distance);
     }
 
-    growAD(mass) {
-        let growPercent = 0.01
-        this.ADSize += mass * growPercent;
+    growMass(mass) {
+        let ADGrowAmount = mass * 0.01      // 1%
+        this.ADSize += ADGrowAmount;        // Accretion Disk grows by 1%
+        this.mass += mass - ADGrowAmount    // Mass grows by 99%
     }
 
     display() {
         // Simple repeating ellipse as the accretion disk grows
         let ringGrowSize = 4
         strokeWeight(ringGrowSize/2.0);
+        // Middle
+        for (let i = 0; i < this.ADSize; i++) {
+            ellipse(this.x, this.y + (i*ringGrowSize/2), this.size*4 + (i*ringGrowSize), this.size*0.5, 0, -PI/3, PI+PI/3);
+            stroke("#ff8888");
+        }
+        // Ring
         for (let i = 0; i < this.ADSize; i++) {
             ellipse(this.x, this.y, this.size*2 + i*ringGrowSize, this.size*2 + i*ringGrowSize);
-            stroke("#aaaaff");
+            stroke("#ff8888");
         }
 
         strokeWeight(4);
         // Display Jet
         if (this.jetActivate) {
-            // Up
+            // Top
             for (let i = 0; i < floor(random(4,8)); i++) {
                 line(this.x, this.y, this.x + random(-this.size, this.size), this.y + random(this.size*2, this.size*6));
-                stroke("#ffaaaa");
+                stroke("#ff0000");
             }
-            // Down
+            // Bottom
             for (let i = 0; i < floor(random(4,8)); i++) {
                 line(this.x, this.y, this.x + random(-this.size, this.size), this.y - random(this.size*2, this.size*6));
-                stroke("#ffaaaa");
+                stroke("#ff0000");
             }
         }
         
