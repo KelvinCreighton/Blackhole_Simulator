@@ -23,6 +23,16 @@ function mouseCoors(e) {
 
 function mousePressed() {
 	mousePress = true;
+
+	console.log(`Mouse pressed at (${mouseX}, ${mouseY})`);
+
+    satellites.forEach(satellite => {
+		console.log(`Checking satellite at (${satellite.x}, ${satellite.y})`);
+        if (satellite.isClicked(mouseX, mouseY)) {
+            selectedSatelliteTitle = satellite.title;
+            console.log("Satellite clicked, title: " + selectedSatelliteTitle);
+        }
+    });
 }
 
 function mouseReleased() {
