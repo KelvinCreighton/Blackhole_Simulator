@@ -1,2 +1,0 @@
-- change the colours of the accretion disk and the jet to be more scientifically accurate
-- 

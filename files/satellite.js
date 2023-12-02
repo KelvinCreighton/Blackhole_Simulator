@@ -60,7 +60,7 @@ function createImageSatellite() {
     }
 
     let randomImageDetail = images[Math.floor(Math.random() * images.length)];
-    let newSatellite = new Satellite(mouseX, mouseY, 100, 0, 0, true, randomImageDetail.img, 50, randomImageDetail.title);
+    let newSatellite = new Satellite(mouseX, mouseY, random(50, 100), 0, 0, true, randomImageDetail.img, 50, randomImageDetail.title);
     satellites.push(newSatellite);
 
     selectedSatelliteTitle = newSatellite.title;
