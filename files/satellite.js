@@ -50,10 +50,16 @@ class Satellite {
 
     display() {
         this.spaghettify();
+        let angle = (blackhole.x - this.x !== 0) ? Math.atan((blackhole.y - this.y) / (blackhole.x - this.x)) : Math.PI / 2;
         if (this.img) {
             // If an image is set, draw the image
             // Canvas.drawImage(this.img, this.x - this.size, this.y - this.size, this.size * 2, this.size * 2);
-            Canvas.drawImage(this.img, this.x - this.sizeX, this.y - this.sizeY, this.sizeX * 2, this.sizeY * 2);
+            
+            Canvas.save();
+            Canvas.translate(this.x, this.y);
+            Canvas.rotate(angle);
+            Canvas.drawImage(this.img, - this.sizeX, - this.sizeY, this.sizeX * 2, this.sizeY * 2);
+            Canvas.restore();
         } else {
             // Otherwise, draw the ellipse
             ellipse(this.x, this.y, this.size*2, this.size*2);
