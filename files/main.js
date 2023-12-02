@@ -28,6 +28,9 @@ function toggleBlinkingPeriod() {
 }
 
 function Main() {
+
+    let Canvas = document.getElementById('Canvas').getContext('2d');
+
     //satellites.push(new Satellite(100, 100, random(50, 200), 1, 2));
     setInterval(toggleBlinkingPeriod, 500);
     setInterval(Update, 20);    // 50fps
